@@ -1,0 +1,4 @@
+name: zmk-keymap-utils
+build:
+  settings:
+    dts_root: .
