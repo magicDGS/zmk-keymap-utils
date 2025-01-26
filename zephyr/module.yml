@@ -1,4 +1,6 @@
 name: zmk-keymap-utils
 build:
+  depends:
+    - zmk-helpers
   settings:
     dts_root: .

@@ -47,3 +47,9 @@
 #define _FIND       _C(F)
 #define _FIND_NEXT  _C(G)
 #define _FIND_PREV  _C(LS(G))
+
+/* Include helpers here
+   NOTE: all usages of ZMK_ functions are overriden from this point on,
+   so only include modules/functions working with them
+*/
+#include <zmk-helpers/helper.h>

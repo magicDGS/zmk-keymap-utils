@@ -2,11 +2,18 @@
 
 This is a collection of helper utilities to simplify the configuration of ZMK keymaps supporting different OS.
 
-They are partly based on the amazing work by [Sunaku](https://github.com/sunaku) and his [glove80-keymap](https://github.com/sunaku/glove80-keymap) project.
+They are partly based on the amazing work by [Sunaku](https://github.com/sunaku) and his [glove80-keymap](https://github.com/sunaku/glove80-keymap) project and uses the [Urob's zmk-helpers](https://github.com/urob/zmk-helpers) module to make the implementation and maintenance easier.
 
-## Installation
+## Getting started
 
-The recommended way to use the `zmk-keymap-utils` is to add as a module to your west configuration (`config/west.yml`):
+### Dependencies
+
+- West-based build supporting modules
+- [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2)
+
+### Installation
+
+To use `zmk-keymap-utils`, you need to add it as a module to your west configuration with its required modules:
 
 ```yaml
 manifests:
@@ -14,8 +21,13 @@ manifests:
     # zmk and other remotes might be configured
     - name: magicDGS
       url-base: https://github.com/magicDGS
-  projects:
+    - name: urob
+      url-base: https://github.com/urob
+   projects:
     # zmk and other projects might be configured
+    - name: zmk-helpers
+      remote-name: urob
+      revision: main
     - name: zmk-keymap-utils
       remote-name: magicDGS
       revision: main
@@ -23,7 +35,7 @@ manifests:
 
 To build locally, check the [ZMK documentation to build with external modules](https://zmk.dev/docs/development/local-toolchain/build-flash#building-with-external-modules).
 
-## Getting Started
+### Basic usage
 
 > [!NOTE]
 > The full documentation can be found on the [documentation page](https://magicdgs.github.io/zmk-keymap-utils/docs/README.md).
@@ -44,4 +56,7 @@ Source the `init.h` header before using any of the features of the `zmk-keymap-u
 
 This project is released under the [ISC License](LICENSE).
 
-It also contains copied or modified code from other Open Sourcethird-party projects, which can be found in the [NOTICE.md](NOTICE.md) file.
+It also contains copied or modified code from other Open Sourcethird-party projects, which can be found in the [NOTICE.md](NOTICE.md) file:
+
+- [sunaku/glove80-keymap](https://github.com/sunaku/glove80-keymap) for initial implementation
+- [urob/zmk-helpers](https://github.com/urob/zmk-helpers) is required as a module to use this project.

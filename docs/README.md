@@ -2,6 +2,29 @@
 
 This is a collection of helper utilities to simplify the configuration of ZMK keymaps supporting different OS.
 
+## Requirements
+
+To use `zmk-keymap-utils`, you need to add it as a module to your west configuration with its required modules:
+
+- This module itself or a compatible fork
+- [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2) or a compatible fork
+
+```yaml
+manifests:
+  remotes:
+    - name: magicDGS
+      url-base: https://github.com/magicDGS
+    - name: urob
+      url-base: https://github.com/urob
+   projects:
+    - name: zmk-helpers
+      remote-name: urob
+      revision: main
+    - name: zmk-keymap-utils
+      remote-name: magicDGS
+      revision: main
+```
+
 ## Initial setup
 
 Define the `OPERATING_SYSTEM` variable with the operating system you intend to use with this keymap:
@@ -15,6 +38,10 @@ Source the `init.h` header before using any of the features of the `zmk-keymap-u
 ```c
 #include "zmk-keymap-utils/init.h"
 ```
+
+> [!CAUTION]
+> Including the `init.h` header includes also the `zmk-helpers` module.
+> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
 
 ## Definitions and behaviors
 
