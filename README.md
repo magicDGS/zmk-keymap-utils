@@ -38,7 +38,7 @@ To build locally, check the [ZMK documentation to build with external modules](h
 ### Basic usage
 
 > [!NOTE]
-> The full documentation can be found on the [documentation page](https://magicdgs.github.io/zmk-keymap-utils/docs/README.md).
+> The full documentation can be found on the [documentation page](https://github.com/magicDGS/zmk-keymap-utils/blob/main/docs/README.md).
 
 Define the `OPERATING_SYSTEM` variable with the operating system you intend to use with this keymap: `L` for Linux (default if not provided), `W` for Windows, `M` for MacOS.
 
