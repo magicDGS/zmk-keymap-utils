@@ -27,11 +27,17 @@ manifests:
     # zmk and other projects might be configured
     - name: zmk-helpers
       remote-name: urob
-      revision: main
+      # pin version of the module
+      revision: v0.1
     - name: zmk-keymap-utils
       remote-name: magicDGS
-      revision: main
+      # pin version of the module
+      revision: v0.1
 ```
+
+> [!TIP]
+> We recommend to pin the version of the modules as shown in the example above.
+> Nevertheless, you can also use directly `main`.
 
 To build locally, check the [ZMK documentation to build with external modules](https://zmk.dev/docs/development/local-toolchain/build-flash#building-with-external-modules).
 

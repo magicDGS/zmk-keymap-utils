@@ -12,18 +12,26 @@ To use `zmk-keymap-utils`, you need to add it as a module to your west configura
 ```yaml
 manifests:
   remotes:
+    # zmk and other remotes might be configured
     - name: magicDGS
       url-base: https://github.com/magicDGS
     - name: urob
       url-base: https://github.com/urob
    projects:
+    # zmk and other projects might be configured
     - name: zmk-helpers
       remote-name: urob
-      revision: main
+      # pin version of the module
+      revision: v0.1
     - name: zmk-keymap-utils
       remote-name: magicDGS
-      revision: main
+      # pin version of the module
+      revision: v0.1
 ```
+
+> [!TIP]
+> We recommend to pin the version of the modules as shown in the example above.
+> Nevertheless, you can also use directly `main`.
 
 ## Initial setup
 
