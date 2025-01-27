@@ -2,7 +2,7 @@
 
 This is a collection of helper utilities to simplify the configuration of ZMK keymaps supporting different OS.
 
-They are partly based on the amazing work by [Sunaku](https://github.com/sunaku) and his [glove80-keymap](https://github.com/sunaku/glove80-keymap) project and uses the [Urob's zmk-helpers](https://github.com/urob/zmk-helpers) module to make the implementation and maintenance easier.
+They are partly based on the amazing work by [Sunaku](https://github.com/sunaku) and his [glove80-keymaps](https://github.com/sunaku/glove80-keymaps) project and uses the [Urob's zmk-helpers](https://github.com/urob/zmk-helpers) module to make the implementation and maintenance easier.
 
 ## Getting started
 
@@ -72,5 +72,5 @@ This project is released under the [ISC License](LICENSE).
 
 It also contains copied or modified code from other Open Sourcethird-party projects, which can be found in the [NOTICE.md](NOTICE.md) file:
 
-- [sunaku/glove80-keymap](https://github.com/sunaku/glove80-keymap) for initial implementation
+- [sunaku/glove80-keymaps](https://github.com/sunaku/glove80-keymaps) for initial implementation
 - [urob/zmk-helpers](https://github.com/urob/zmk-helpers) is required as a module to use this project.
