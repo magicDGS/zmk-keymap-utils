@@ -84,7 +84,7 @@ Other definitons might be used on different behaviors and are not intended to be
 ## Select Word
 
 The `select_word.dtsi` include file provides support for extend/select behaviors for for the specified OS.
-They are based on the [Pascal Getreuer's Select Word macro from QMK](https://getreuer.info/posts/keyboards/select-word/index.html) implementation for ZMK by [Sunaku](https://github.com/sunaku/glove80-keymapd).
+They are based on the [Pascal Getreuer's Select Word macro from QMK](https://getreuer.info/posts/keyboards/select-word/index.html) implementation for ZMK by [Sunaku](https://github.com/sunaku/glove80-keymaps).
 
 To use the default configuration, import with:
 
