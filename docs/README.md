@@ -72,3 +72,39 @@ The core definitions are provided by default by the intial setup (including the 
 > The shortcuts might not work as expected if the `&caps_word` behavior is active.
 
 Other definitons might be used on different behaviors and are not intended to be consumed by the user.
+
+## Select Word
+
+The `select_word.dtsi` include file provides support for extend/select behaviors for for the specified OS.
+They are based on the [Pascal Getreuer's Select Word macro from QMK](https://getreuer.info/posts/keyboards/select-word/index.html) implementation for ZMK by [Sunaku](https://github.com/sunaku/glove80-keymapd).
+
+To use the default configuration, import with:
+
+```c
+// select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
+#include "zmk-keymap-utils/select_word.h"
+```
+
+To use a different delay, the `SELECT_WORD_DELAY` property can be used before import (default is `1`).
+This configuration defines how long the macro waits (in ms) after moving the cursor before it selects a word.
+A larger delay may allow th"macro to move to the next word upon each invocation.
+For example:
+
+```c
+#define SELECT_WORD_DELAY 50
+#include "zmk-keymap-utils/select_word.h"
+```
+
+The behaviors provided after import are the following:
+
+| Behavior       | Description                                                             |
+| -------------- | ----------------------------------------------------------------------- |
+| `&select_all`  | Select the whole text                                                   |
+| `&select_none` | Remove current selection                                                |
+| `&select_word` | Select current word (jump to next word upon each successive invocation) |
+| `&extend_word` | Extend current selection by one word                                    |
+| `&select_line` | Select current line                                                     |
+| `&extend_line` | Extend current selection by one line                                    |
+
+> [!TIP]
+> The behaviors are implemented in such a way that using them with the shift modifier active selects/extends in the t

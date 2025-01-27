@@ -49,7 +49,14 @@ Define the `OPERATING_SYSTEM` variable with the operating system you intend to u
 Source the `init.h` header before using any of the features of the `zmk-keymap-utils` module on your `.keymap` file to provide the initial keycodes and shortcuts for the specified OS.
 
 ```c
-#include "zmk-keymap-utils/init.h"
+#include <zmk-keymap-utils/init.h>
+```
+
+Then include any extra functionality you need:
+
+```c
+// select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
+#include <zmk-keymap-utils/select_word.h>
 ```
 
 # License
