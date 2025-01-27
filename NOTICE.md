@@ -2,7 +2,7 @@ This project contains copied and modified code from third-party, and uses third 
 
 ## Third-party
 
-- [sunaku/glove80-keymap](https://github.com/sunaku/glove80-keymaps), ISC License
+- [sunaku/glove80-keymaps](https://github.com/sunaku/glove80-keymaps), ISC License
 
   ```
     (the ISC license)
