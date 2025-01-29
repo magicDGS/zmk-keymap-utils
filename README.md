@@ -63,8 +63,12 @@ Then include any extra functionality you need:
 
 ```c
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
-#include <zmk-keymap-utils/select_word.h>
+#include <zmk-keymap-utils/select_word.dtsi>
+// timeless home-row mods based on urob's implementation
+#include <zmk-keymap-utils/hrm/timeless.dtsi>
 ```
+
+## Inspiration
 
 # License
 
@@ -74,3 +78,9 @@ It also contains copied or modified code from other Open Sourcethird-party proje
 
 - [sunaku/glove80-keymaps](https://github.com/sunaku/glove80-keymaps) for initial implementation
 - [urob/zmk-helpers](https://github.com/urob/zmk-helpers) is required as a module to use this project.
+
+## Inspiration
+
+In adition to the projects mentioned in the License, this project is inspired by other zmk-config projects and their configuration:
+
+- [urob/zmk-config](https://github.com/urob/zmk-config), where it was firs described the configuration to implement [Timeless homerow mods](https://github.com/urob/zmk-config?tab=readme-ov-file#timeless-homerow-mods).

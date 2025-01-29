@@ -116,3 +116,66 @@ The behaviors provided after import are the following:
 
 > [!TIP]
 > The behaviors are implemented in such a way that using them with the shift modifier active selects/extends in the t
+
+## Home-Row Mods
+
+There are different implementations of Home-Row Mods (HRM) that are tailored to different ways of typing.
+A good resource to read about them is the [Precondition's Guide to Home Row Mods](https://precondition.github.io/home-row-mods).
+
+Here we provide utilities for different implementations:
+
+- Timeless HRM: based on [Urob's Personal zmk-config](https://github.com/urob/zmk-config/) implemenation.
+
+### Timeless HRM
+
+The "timeless" HRM is using basic ZMK behavior to implement HRMs that are tailored to users without not very consistent typing speeds.
+Basically tries to minimize misfires by being independent of any timing configuration.
+The `tapping-term-ms` is in practice not infinity but set by default to 175ms, which provides a way to:
+
+- Combine mods with alpha-keys on the same hand
+- Press a modifier without another key
+
+More detailed information about this implementation can be found on the [urob/zmk-config README for timeless HRM](https://github.com/urob/zmk-config?tab=readme-ov-file#timeless-homerow-mods).
+
+Here we provide a basic function to define your HRM behaviors with ease.
+To use the default configuration, import with:
+
+```c
+// select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
+#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+```
+
+To use a different `tapping-term-ms`, the `TIMELESS_HRM_QUICK_TAP_MS` property can be used before import (default is `175`).
+This configuration can be tweak to support mod+alpha combinations in the same hand, and modifier press without other keys.
+For example:
+
+```c
+#define TIMELESS_HRM_QUICK_TAP_MS 280
+#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+```
+
+After import, you can define your HRMs using the `MAKE_TIMELESS_HRM` function.
+This function takes the following parameters:
+
+- `NAME`: the name of the HRM-behavior.
+  The behavior will be used on the keymap with `&NAME <mod> <alpha>` (where name is the given parameter).
+- `HOLD`: the behavior on hold.
+  This is the behavior to trigger on hold, and can be a simple `&kp` (tipically) or any other complex behavior having a parameter.
+- `TAP`: the behavior on tap.
+  This is the behavior to trigger on tap, and can be a simple `&kp` (tipically) or any other complex behavior having a parameter.
+- `TRIGGER_POS`: positions for hold-trigger-key-positions. Tipically the positions on the oposite hand from the HRM hand.
+
+A clear example on how to use this function is a refactor of the [Urob's Personal zmk-config](https://github.com/urob/zmk-config/) HRM implementation using this module.
+
+> [!NOTE]
+> This snippet uses the standard key-labels from `urob/zmk-helpers` (see [its README](https://github.com/urob/zmk-helpers?tab=readme-ov-file#key-labels-collection) for more details).
+
+```c
+#include "zmk-helpers/key-labels/36.h"                                      // Source key-labels.
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // Left-hand keys.
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // Right-hand keys.
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // Thumb keys.
+
+MAKE_TIMELESS_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs - for example, &hml LGUI A
+MAKE_TIMELESS_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs - for example, &hmr LGUI O
+```
