@@ -61,23 +61,37 @@ Nevertheless, some behaviors are not available on all OS, and will be marked in 
 
 The core definitions are provided by default by the intial setup (including the `init.h` header on the `.keymap` file), which can be used with `&kp` or any other behavior:
 
-| Shortcut     | Description                | L   | W   | M   |
-| ------------ | -------------------------- | --- | --- | --- |
-| `_REDO`      | Redo shortcut              | ⭐  | ⭐  | ⭐  |
-| `_UNDO`      | Undo shortcut              | ⭐  | ⭐  | ⭐  |
-| `_COPY`      | Copy shortcut              | ⭐  | ⭐  | ⭐  |
-| `_PASTE`     | Paste shortcut             | ⭐  | ⭐  | ⭐  |
-| `_FIND`      | Find shortcut              | ⭐  | ⭐  | ⭐  |
-| `_FIND_NEXT` | Find next shortcut         | ⭐  | ⭐  | ⭐  |
-| `_FIND_PREV` | Find previous shortcut     | ⭐  | ⭐  | ⭐  |
-| `_HOME`      | Home key (shortcut in mac) | ⭐  | ⭐  | ⭐  |
-| `_END`       | End key (shortcut in mac)  | ⭐  | ⭐  | ⭐  |
-| `_POWER`     | Power shortcut             | ⭐  | ❌  | ⭐  |
-| `_SLEEP`     | Sleep shortcut             | ⭐  | ❌  | ⭐  |
-| `_LOCK`      | Lock shortcut              | ⭐  | ⭐  | ⭐  |
+| Shortcut     | Description                    | L   | W   | M   |
+| ------------ | ------------------------------ | --- | --- | --- |
+| `_REDO`      | Redo shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_UNDO`      | Undo shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_COPY`      | Copy shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_PASTE`     | Paste shortcut                 | ⭐  | ⭐  | ⭐  |
+| `_FIND`      | Find shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_FIND_NEXT` | Find next shortcut             | ⭐  | ⭐  | ⭐  |
+| `_FIND_PREV` | Find previous shortcut         | ⭐  | ⭐  | ⭐  |
+| `_HOME`      | Home key (shortcut in mac)     | ⭐  | ⭐  | ⭐  |
+| `_END`       | End key (shortcut in mac)      | ⭐  | ⭐  | ⭐  |
+| `_POWER`     | Power shortcut                 | ⭐  | ❌  | ⭐  |
+| `_SLEEP`     | Sleep shortcut                 | ⭐  | ❌  | ⭐  |
+| `_LOCK`      | Lock shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_MEH`       | Meh key (Shift+Ctrl+Alt)       | ⭐  | ⭐  | ⭐  |
+| `_HYPER`     | Hyper key (Shift+Ctrl+Alt+Gui) | ⭐  | ⭐  | ⭐  |
 
 > [!CAUTION]
 > The shortcuts might not work as expected if the `&caps_word` behavior is active.
+
+Also some modifier function smight be provided:
+
+| Modifier  | Description                                            |
+| --------- | ------------------------------------------------------ |
+| `_C(key)` | OS-specific modifier for shortcuts (Cntrl/Command+key) |
+| `_M(key)` | Meh modifier (Meh+key)                                 |
+| `_H(key)` | Hyper modifier (Hyper+key)                             |
+
+> [!IMPORTANT]
+> The Meh/Hyper related functionality might be available eventually in the zmk project keys.h/modifiers.h defaults (see [PR#2341](https://github.com/zmkfirmware/zmk/pull/2341)).
+> Future versions of this module would most likely remove these aliases to encourage its use.
 
 Other definitons might be used on different behaviors and are not intended to be consumed by the user.
 

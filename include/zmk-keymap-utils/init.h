@@ -48,6 +48,13 @@
 #define _FIND_NEXT  _C(G)
 #define _FIND_PREV  _C(LS(G))
 
+// meh/hyper as keys and modifiers
+// TODO: this might not be necessary after https://github.com/zmkfirmware/zmk/pull/2341
+#define _MEH    LS(LC(LALT))
+#define _M(key) LS(LC(LA(key)))
+#define _HYPER  LS(LC(LA(LGUI)))
+#define _H(key) LS(LC(LA(LG(key)))
+
 /* Include helpers here
    NOTE: all usages of ZMK_ functions are overriden from this point on,
    so only include modules/functions working with them
