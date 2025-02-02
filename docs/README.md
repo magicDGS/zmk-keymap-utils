@@ -61,22 +61,26 @@ Nevertheless, some behaviors are not available on all OS, and will be marked in 
 
 The core definitions are provided by default by the intial setup (including the `init.h` header on the `.keymap` file), which can be used with `&kp` or any other behavior:
 
-| Shortcut     | Description                    | L   | W   | M   |
-| ------------ | ------------------------------ | --- | --- | --- |
-| `_REDO`      | Redo shortcut                  | ⭐  | ⭐  | ⭐  |
-| `_UNDO`      | Undo shortcut                  | ⭐  | ⭐  | ⭐  |
-| `_COPY`      | Copy shortcut                  | ⭐  | ⭐  | ⭐  |
-| `_PASTE`     | Paste shortcut                 | ⭐  | ⭐  | ⭐  |
-| `_FIND`      | Find shortcut                  | ⭐  | ⭐  | ⭐  |
-| `_FIND_NEXT` | Find next shortcut             | ⭐  | ⭐  | ⭐  |
-| `_FIND_PREV` | Find previous shortcut         | ⭐  | ⭐  | ⭐  |
-| `_HOME`      | Home key (shortcut in mac)     | ⭐  | ⭐  | ⭐  |
-| `_END`       | End key (shortcut in mac)      | ⭐  | ⭐  | ⭐  |
-| `_POWER`     | Power shortcut                 | ⭐  | ❌  | ⭐  |
-| `_SLEEP`     | Sleep shortcut                 | ⭐  | ❌  | ⭐  |
-| `_LOCK`      | Lock shortcut                  | ⭐  | ⭐  | ⭐  |
-| `_MEH`       | Meh key (Shift+Ctrl+Alt)       | ⭐  | ⭐  | ⭐  |
-| `_HYPER`     | Hyper key (Shift+Ctrl+Alt+Gui) | ⭐  | ⭐  | ⭐  |
+| Shortcut         | Description                    | L   | W   | M   |
+| ---------------- | ------------------------------ | --- | --- | --- |
+| `_REDO`          | Redo shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_UNDO`          | Undo shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_COPY`          | Copy shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_PASTE`         | Paste shortcut                 | ⭐  | ⭐  | ⭐  |
+| `_FIND`          | Find shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_FIND_NEXT`     | Find next shortcut             | ⭐  | ⭐  | ⭐  |
+| `_FIND_PREV`     | Find previous shortcut         | ⭐  | ⭐  | ⭐  |
+| `_FIND_REPLACE ` | Find and replace shortcut      | ⭐  | ⭐  | ⭐  |
+| `_HOME`          | Home key (shortcut in mac)     | ⭐  | ⭐  | ⭐  |
+| `_END`           | End key (shortcut in mac)      | ⭐  | ⭐  | ⭐  |
+| `_POWER`         | Power shortcut                 | ⭐  | ❌  | ⭐  |
+| `_SLEEP`         | Sleep shortcut                 | ⭐  | ❌  | ⭐  |
+| `_LOCK`          | Lock shortcut                  | ⭐  | ⭐  | ⭐  |
+| `_B_SEARCH_BAR`  | Browser search bar             | ⭐  | ⭐  | ⭐  |
+| `_B_URL_BAR`     | Browser URL bar                | ⭐  | ⭐  | ⭐  |
+| `_B_DOWNLOADS`   | Browser download shortcut      | ⭐  | ⭐  | ⭐  |
+| `_MEH`           | Meh key (Shift+Ctrl+Alt)       | ⭐  | ⭐  | ⭐  |
+| `_HYPER`         | Hyper key (Shift+Ctrl+Alt+Gui) | ⭐  | ⭐  | ⭐  |
 
 > [!CAUTION]
 > The shortcuts might not work as expected if the `&caps_word` behavior is active.

@@ -40,13 +40,19 @@
 #elif OPERATING_SYSTEM == 'L'
   #define _LOCK   K_LOCK
 #endif
-#define _UNDO       _C(Z)
-#define _CUT        _C(X)
-#define _COPY       _C(C)
-#define _PASTE      _C(V)
-#define _FIND       _C(F)
-#define _FIND_NEXT  _C(G)
-#define _FIND_PREV  _C(LS(G))
+#define _UNDO         _C(Z)
+#define _CUT          _C(X)
+#define _COPY         _C(C)
+#define _PASTE        _C(V)
+#define _FIND         _C(F)
+#define _FIND_NEXT    _C(G)
+#define _FIND_PREV    _C(LS(G))
+#define _FIND_REPLACE _C(H)
+
+// Browser shortcuts
+#define _B_SEARCH_BAR _C(K)
+#define _B_URL_BAR    _C(L)
+#define _B_DOWNLOADS  _C(J)
 
 // meh/hyper as keys and modifiers
 // TODO: this might not be necessary after https://github.com/zmkfirmware/zmk/pull/2341
