@@ -25,13 +25,14 @@ manifests:
       revision: v0.1
     - name: zmk-keymap-utils
       remote-name: magicDGS
-      # pin version of the module
-      revision: v0.1
+      # pin version of the module to the latest release
+      revision: latest
 ```
 
 > [!TIP]
 > We recommend to pin the version of the modules as shown in the example above.
-> Nevertheless, you can also use directly `main`.
+> If you would like to use the latest release of the `zmk-keymap-utils` module, we maintain a `latest` tag to pin.
+> Nevertheless, you can also use directly `main` (althouhg this is considered an unstable branch).
 
 ## Initial setup
 
