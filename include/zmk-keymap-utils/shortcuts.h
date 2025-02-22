@@ -60,3 +60,6 @@
 #define _M(key) LS(LC(LA(key)))
 #define _HYPER  LS(LC(LA(LGUI)))
 #define _H(key) LS(LC(LA(LG(key)))
+
+// define that the shorcuts import worked with the operating system
+#define _ZMK_KEYMAP_UTILS_SHORTCUTS_IMPORT OPERATING_SYSTEM
