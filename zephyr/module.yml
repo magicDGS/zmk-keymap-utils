@@ -1,4 +1,4 @@
-name: zmk-keymap-utils
+name: zmk-feature-keymap-utils
 build:
   depends:
     - zmk-helpers
