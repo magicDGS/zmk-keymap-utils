@@ -6,6 +6,10 @@
    so only include modules/functions working with them
 */
 #include <zmk-helpers/helper.h>
+/* Include the shortcuts.h if not included yet */
+#ifndef _ZMK_KEYMAP_UTILS_SHORTCUTS_IMPORT
+#include <zmk-keymap-utils/shortcuts.h>
+#endif
 
 //////////////////////////////////////////////////////////////////////////
 //
