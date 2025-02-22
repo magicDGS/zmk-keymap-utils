@@ -55,25 +55,36 @@ Define the `OPERATING_SYSTEM` variable with the operating system you intend to u
 - `#define OPERATING_SYSTEM "W"` for Windows
 - `#define OPERATING_SYSTEM "M"` for MacOS
 
-Source the `init.h` header before using any of the features of the `zmk-keymap-utils` module on your `.keymap` file to provide the initial keycodes and shortcuts for the specified OS.
-
-```c
-#include "zmk-keymap-utils/init.h"
-```
-
-> [!CAUTION]
-> Including the `init.h` header includes also the `zmk-helpers` module.
-> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
+It is important to define the `OPERATING_SYSTEM` before including any of the features from the `zmk-keymap-utils` module to have the proper configuration for your operating system.
 
 ## Definitions and behaviors
 
 The `zmk-keymap-utils` module provides definitions and behaviors that can be used on an OS-agnostic way to configure the keymap, by adding aliases for the keycodes or using shortcuts/macros if they are not possible.
 
-Nevertheless, some behaviors are not available on all OS, and will be marked in the tables below with `❌` or `❓` to indicate that they are not available or they are unknown.
+To use this definitions, source the `shortcuts.h` header before to provide the keycodes and shortcuts for the specified OS.
 
-### Core definitions
+```c
+#include "zmk-keymap-utils/init.h"
+```
 
-The core definitions are provided by default by the intial setup (including the `init.h` header on the `.keymap` file), which can be used with `&kp` or any other behavior:
+### Shortcuts and modifiers
+
+The shortcuts and modifieres are provided with the `shortcuts.h` header, which can be used with `&kp` or any other behavior.
+
+To use this definitions, source the `shortcuts.h` header:
+
+```c
+#include <zmk-keymap-utils/shortcuts.h>
+```
+
+> [!TIP]
+> We recommend to import the shortcuts before any other behavior, as some of them would use them.
+> They would be imported by default if not provided.
+
+Those shortcuts and modifiers work for the specified OS;
+nevertheless, not all are available on all and migth not be available (marked in the tables below with `❌`) or its behavior is unknown (marked with `❓`).
+
+Provided shortcuts include:
 
 | Shortcut         | Description                    | L   | W   | M   |
 | ---------------- | ------------------------------ | --- | --- | --- |
@@ -99,7 +110,7 @@ The core definitions are provided by default by the intial setup (including the 
 > [!CAUTION]
 > The shortcuts might not work as expected if the `&caps_word` behavior is active.
 
-Also some modifier function smight be provided:
+Also some modifier functions are provided:
 
 | Modifier  | Description                                            |
 | --------- | ------------------------------------------------------ |
@@ -108,7 +119,7 @@ Also some modifier function smight be provided:
 | `_H(key)` | Hyper modifier (Hyper+key)                             |
 
 > [!IMPORTANT]
-> The Meh/Hyper related functionality might be available eventually in the zmk project keys.h/modifiers.h defaults (see [PR#2341](https://github.com/zmkfirmware/zmk/pull/2341)).
+> The Meh/Hyper related functionality might be available eventually in the zmk project `keys.h`/`modifiers.h` defaults (see [PR#2341](https://github.com/zmkfirmware/zmk/pull/2341)).
 > Future versions of this module would most likely remove these aliases to encourage its use.
 
 Other definitons might be used on different behaviors and are not intended to be consumed by the user.
@@ -124,6 +135,14 @@ To use the default configuration, import with:
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
 #include <behaviors/select_word.h>
 ```
+
+> [!CAUTION]
+> Including the `select_word.h` behavior includes also `zmk-helpers` module.
+> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
+
+> [!CAUTION]
+> The `select_word.h` behavior requires includes, if not already sourced, the `shortcuts.h` header.
+> We recommend to import it beforehand to ensure that the they are always included.
 
 To use a different delay, the `SELECT_WORD_DELAY` property can be used before import (default is `1`).
 This configuration defines how long the macro waits (in ms) after moving the cursor before it selects a word.
@@ -176,6 +195,10 @@ To use the default configuration, import with:
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
 #include "zmk-keymap-utils/hrm/timeless.h"
 ```
+
+> [!CAUTION]
+> Including the `select_word.h` behavior includes also the `zmk-helpers` module.
+> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
 
 To use a different `tapping-term-ms`, the `TIMELESS_HRM_QUICK_TAP_MS` property can be used before import (default is `175`).
 This configuration can be tweak to support mod+alpha combinations in the same hand, and modifier press without other keys.

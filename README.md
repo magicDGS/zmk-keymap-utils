@@ -50,11 +50,11 @@ Define the `OPERATING_SYSTEM` variable with the operating system you intend to u
 - `#define OPERATING_SYSTEM "W"` for Windows
 - `#define OPERATING_SYSTEM "M"` for MacOS
 
-Source the `init.h` header before using any of the features of the `zmk-keymap-utils` module on your `.keymap` file to provide the initial keycodes and shortcuts for the specified OS.
+Source the `shortcuts.h` header before using any of the features of the `zmk-keymap-utils` module on your `.keymap` file to provide the initial keycodes and shortcuts for the specified OS.
 
 ```c
 // #define OPERATING_SYSTEM "L"  // Linux (default) - uncomment to override with explicit values: L, W, M
-#include <zmk-keymap-utils/init.h>
+#include <zmk-keymap-utils/shortcuts.h>
 ```
 
 Then include any extra functionality you need:
