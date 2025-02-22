@@ -4,10 +4,26 @@ This is a collection of helper utilities to simplify the configuration of ZMK ke
 
 ## Requirements
 
-To use `zmk-keymap-utils`, you need to add it as a module to your west configuration with its required modules:
+To use `zmk-keymap-utils`, you need to add it as a module to your west configuration importing the required modules from west:
 
-- This module itself or a compatible fork
-- [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2) or a compatible fork
+````yaml
+manifests:
+  remotes:
+    # zmk and other remotes might be configured
+    - name: magicDGS
+      url-base: https://github.com/magicDGS
+   projects:
+    # zmk and other projects might be configured
+    - name: zmk-keymap-utils
+      remote: magicDGS
+      # pin version of the module
+      revision: v0.3
+      # import required modules (i.e., urob/zmk-helpers)
+      import: west.yml
+
+You can also import it with a different version, remote or path for the required modules.
+For example, a west configuration with the main version of the module and its [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2) requirement
+that is located on the `modules` path:
 
 ```yaml
 manifests:
@@ -20,14 +36,12 @@ manifests:
    projects:
     # zmk and other projects might be configured
     - name: zmk-helpers
-      remote-name: urob
-      # pin version of the module
-      revision: v0.1
+      remote: urob
+      path: modules/zmk-helpers
     - name: zmk-keymap-utils
-      remote-name: magicDGS
-      # pin version of the module
-      revision: v0.3
-```
+      remote: magicDGS
+      path: modules/zmk-keymap-utils
+````
 
 > [!TIP]
 > We recommend to pin the version of the modules as shown in the example above.
@@ -108,7 +122,7 @@ To use the default configuration, import with:
 
 ```c
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
-#include "zmk-keymap-utils/select_word.h"
+#include <behaviors/select_word.h>
 ```
 
 To use a different delay, the `SELECT_WORD_DELAY` property can be used before import (default is `1`).
@@ -118,7 +132,7 @@ For example:
 
 ```c
 #define SELECT_WORD_DELAY 50
-#include "zmk-keymap-utils/select_word.h"
+#include <behaviors/select_word.h>
 ```
 
 The behaviors provided after import are the following:
@@ -160,7 +174,7 @@ To use the default configuration, import with:
 
 ```c
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
-#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+#include "zmk-keymap-utils/hrm/timeless.h"
 ```
 
 To use a different `tapping-term-ms`, the `TIMELESS_HRM_QUICK_TAP_MS` property can be used before import (default is `175`).
@@ -169,7 +183,7 @@ For example:
 
 ```c
 #define TIMELESS_HRM_QUICK_TAP_MS 280
-#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+#include <zmk-keymap-utils/hrm/timeless.h>
 ```
 
 After import, you can define your HRMs using the `MAKE_TIMELESS_HRM` function.
