@@ -1,5 +1,12 @@
 /* Original code copied from Sunaku's Keymap modified to use zmk-helpers - https://github.com/sunaku/glove80-keymaps */
 
+/* Include helpers here as they are required for the behavior.
+
+   NOTE: all usages of ZMK_ functions are overriden from this point on,
+   so only include modules/functions working with them
+*/
+#include <zmk-helpers/helper.h>
+
 //////////////////////////////////////////////////////////////////////////
 //
 // Approximation of Pascal Getreuer's Select Word macro from QMK

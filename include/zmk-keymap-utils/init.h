@@ -60,9 +60,3 @@
 #define _M(key) LS(LC(LA(key)))
 #define _HYPER  LS(LC(LA(LGUI)))
 #define _H(key) LS(LC(LA(LG(key)))
-
-/* Include helpers here
-   NOTE: all usages of ZMK_ functions are overriden from this point on,
-   so only include modules/functions working with them
-*/
-#include <zmk-helpers/helper.h>
