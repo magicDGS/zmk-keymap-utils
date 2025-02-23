@@ -1,0 +1,125 @@
+- id: 1
+  code: _REDO
+  description: Redo shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 2
+  code: _UNDO
+  description: Undo shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 3
+  code: _COPY
+  description: Copy shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 4
+  code: _PASTE
+  description: Paste shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 5
+  code: _FIND
+  description: Find shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 6
+  code: _FIND_NEXT
+  description: Find next shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 7
+  code: _FIND_PREV
+  description: Find previous shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 8
+  code: _FIND_REPLACE
+  description: Find and replace shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 9
+  code: _HOME
+  description: Home key (shortcut in mac)
+  L: supported
+  W: supported
+  M: supported
+
+- id: 10
+  code: _END
+  description: End key (shortcut in mac)
+  L: supported
+  W: supported
+  M: supported
+
+- id: 11
+  code: _POWER
+  description: Power shortcut
+  L: supported
+  W: unsupported
+  M: supported
+
+- id: 12
+  code: _SLEEP
+  description: Sleep shortcut
+  L: supported
+  W: unsupported
+  M: supported
+
+- id: 13
+  code: _LOCK
+  description: Lock shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 14
+  code: _B_SEARCH_BAR
+  description: Browser search bar
+  L: supported
+  W: supported
+  M: supported
+
+- id: 15
+  code: _B_URL_BAR
+  description: Browser URL bar
+  L: supported
+  W: supported
+  M: supported
+
+- id: 16
+  code: _B_DOWNLOADS
+  description: Browser download shortcut
+  L: supported
+  W: supported
+  M: supported
+
+- id: 17
+  code: _MEH
+  description: Meh key (Shift+Ctrl+Alt)
+  L: supported
+  W: supported
+  M: supported
+
+- id: 18
+  code: _HYPER
+  description: Hyper key (Shift+Ctrl+Alt+Gui)
+  L: supported
+  W: supported
+  M: supported

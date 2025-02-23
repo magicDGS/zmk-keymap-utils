@@ -1,0 +1,50 @@
+---
+title: Select Word
+description: TODO
+---
+
+import BehaviorTable from '../../../components/BehaviorTable.astro';
+
+The `select_word.dtsi` include file provides support for extend/select behaviors for for the specified OS.
+They are based on the [Pascal Getreuer's Select Word macro from QMK](https://getreuer.info/posts/keyboards/select-word/index.html)
+implementation for ZMK by [Sunaku](https://github.com/sunaku/glove80-keymaps).
+
+## Usage
+
+:::caution
+The `select_word.h` behavior requires includes, if not already sourced, the `shortcuts.h` header.
+We recommend to import it beforehand to ensure that the they are always included.
+:::
+
+To use the default configuration, import with:
+
+```c
+// select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
+#include <behaviors/select_word.h>
+```
+
+:::danger
+Including the `select_word.h` behavior includes also `zmk-helpers` module.
+Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
+:::
+
+To use a different delay, the `SELECT_WORD_DELAY` property can be used before import (default is `1`).
+This configuration defines how long the macro waits (in ms) after moving the cursor before it selects a word.
+A larger delay may allow th"macro to move to the next word upon each invocation.
+For example:
+
+```c
+#define SELECT_WORD_DELAY 50
+#include <behaviors/select_word.h>
+```
+
+## Behaviors
+
+The behaviors provided after import are the following:
+
+<BehaviorTable name="select_word" />
+
+
+:::tip
+The behaviors are implemented in such a way that using them with the shift modifier active selects/extends in the t
+:::

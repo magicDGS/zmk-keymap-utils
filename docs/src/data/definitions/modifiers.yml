@@ -1,0 +1,19 @@
+- id: 1
+  code: _C(key)
+  description: OS-specific modifier for shortcuts (Cntrl/Command+key)
+  L: supported
+  W: supported
+  M: supported
+- id: 2
+  code: _M(key)
+  description: Meh modifier (Meh+key)
+  L: supported
+  W: supported
+  M: supported
+- id: 3
+  code: _H(key)
+  description: Hyper modifier (Hyper+key)
+  L: supported
+  W: supported
+  M: supported
+

@@ -1,0 +1,44 @@
+---
+title: Shortcuts & Modifiers
+description: TODO
+---
+
+import DefinitionTable from '../../../components/DefinitionTable.astro';
+
+TODO: intro & overhaul (also maybe move the tip to the configuration part or getting started?)
+
+## Usage
+
+:::tip
+We recommend to import the shortcuts before any other behavior, as some of them would use them.
+They would be imported by default if not provided.
+:::
+
+To use this definitions, source the `shortcuts.h` header:
+
+```c
+#include <zmk-keymap-utils/shortcuts.h>
+```
+
+## Shortcut defintions
+
+Provided shortcuts include:
+
+<DefinitionTable name="shortcuts" title="Shortcuts"/>
+
+:::danger
+The shortcuts might not work as expected if the `&caps_word` behavior is active.
+:::
+
+## Modifier definitions
+
+Also some modifier functions are provided:
+
+<DefinitionTable name="modifiers" title="Modifiers"/>
+
+:::caution
+The Meh/Hyper related functionality might be available eventually in the zmk project `keys.h`/`modifiers.h` defaults (see [PR#2341](https://github.com/zmkfirmware/zmk/pull/2341)).
+Future versions of this module would most likely remove these aliases to encourage its use.
+:::
+
+Other definitons might be used on different behaviors and are not intended to be consumed by the user.

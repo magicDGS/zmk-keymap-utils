@@ -6,23 +6,37 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'zmk-keymap-utils',
 			social: {
-				github: 'https://github.com/withastro/starlight',
+				github: 'https://github.com/magicDGS/zmk-keymap-utils',
 			},
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Get started',
+					autogenerate: { directory: 'get-started' },
 				},
+				// TODO: still not good solution to map a directory to a label
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Features',
+					items: [
+						{
+							label: 'Shortcuts & Modifiers',
+							link: '/features/shortcuts-and-modifiers',
+						},
+						{
+							label: 'Select Word',
+							link: '/features/select-word',
+						},
+						{
+							label: 'Home Row Mods',
+							autogenerate: { directory: 'features/home-row-mods' },
+						}
+					]
 				},
 			],
+			customCss: [
+				'./src/styles/layout.css'
+			]
 		}),
 	],
 });

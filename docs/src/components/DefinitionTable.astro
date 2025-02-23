@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  name: string,
+  title: string
+}
+
+const SUPPORT_TO_EMOJI  = {
+  supported: '⭐',
+  unsupported: '❌',
+  unknown: '❓'
+}
+
+const { name, title } = Astro.props
+const collectionData = await getCollection(name);
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>{title}</th>
+      <th>Description</th>
+      <th>L</th>
+      <th>W</th>
+      <th>M</th>
+    </tr>
+  </thead>
+  <tbody>
+    {collectionData.map(element => (
+      <tr>
+        <td><code>{element.data.code}</code></td>
+        <td>{element.data.description}</td>
+        <td>{SUPPORT_TO_EMOJI[element.data.L]}</td>
+        <td>{SUPPORT_TO_EMOJI[element.data.W]}</td>
+        <td>{SUPPORT_TO_EMOJI[element.data.M]}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

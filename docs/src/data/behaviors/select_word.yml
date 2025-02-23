@@ -1,0 +1,18 @@
+- id: 1
+  behavior: "&select_all"
+  description: Select the whole text
+- id: 2
+  behavior: "&select_none"
+  description: Remove current selection
+- id: 3
+  behavior: "&select_word"
+  description: Select current word (jump to next word upon each successive invocation)
+- id: 4
+  behavior: "&extend_word"
+  description: Extend current selection by one word
+- id: 5
+  behavior: "&select_line"
+  description: Select current line
+- id: 6
+  behavior: "&extend_line"
+  description: Extend current selection by one line
