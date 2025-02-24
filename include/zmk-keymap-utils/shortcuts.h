@@ -20,6 +20,7 @@
   #define _W      LA
   #define _HOME   _C(LEFT)
   #define _END    _C(RIGHT)
+  #define _FILES  LS(LA(M))
   #define _EMOJI  LG(LC(SPACE))
 #else
   #define _C      LC
@@ -30,6 +31,7 @@
   #define _W      _C
   #define _HOME   HOME
   #define _END    END
+  #define _FILES  LG(E)
   #define _EMOJI  LG(DOT)
 #endif
 #define _SLEEP      C_SLEEP

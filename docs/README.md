@@ -86,6 +86,7 @@ Provided shortcuts include (note that `❌` or `❓` indicates that the shortcut
 | `_FIND_REPLACE ` | Find and replace shortcut      | ⭐  | ⭐  | ⭐  |
 | `_HOME`          | Home key (shortcut in mac)     | ⭐  | ⭐  | ⭐  |
 | `_END`           | End key (shortcut in mac)      | ⭐  | ⭐  | ⭐  |
+| `_FILES`         | Open file browser              | ⭐  | ⭐  | ⭐  |
 | `_POWER`         | Power shortcut                 | ⭐  | ❌  | ⭐  |
 | `_SLEEP`         | Sleep shortcut                 | ⭐  | ❌  | ⭐  |
 | `_LOCK`          | Lock shortcut                  | ⭐  | ⭐  | ⭐  |
