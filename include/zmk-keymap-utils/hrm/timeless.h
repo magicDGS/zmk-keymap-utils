@@ -2,6 +2,13 @@
  * Adapted from urob's zmk-config repo: https://github.com/urob/zmk-config/
  */
 
+/* Include helpers here as they are required for the behavior.
+
+   NOTE: all usages of ZMK_ functions are overriden from this point on,
+   so only include modules/functions working with them
+*/
+#include <zmk-helpers/helper.h>
+
 // defines the quick-tap to be used on timeless-homerow-mods
 #ifndef TIMELESS_HRM_QUICK_TAP_MS
     #define TIMELESS_HRM_QUICK_TAP_MS 175

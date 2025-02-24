@@ -61,8 +61,5 @@
 #define _HYPER  LS(LC(LA(LGUI)))
 #define _H(key) LS(LC(LA(LG(key)))
 
-/* Include helpers here
-   NOTE: all usages of ZMK_ functions are overriden from this point on,
-   so only include modules/functions working with them
-*/
-#include <zmk-helpers/helper.h>
+// define that the shorcuts import worked with the operating system
+#define _ZMK_KEYMAP_UTILS_SHORTCUTS_IMPORT OPERATING_SYSTEM

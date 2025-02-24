@@ -4,10 +4,27 @@ This is a collection of helper utilities to simplify the configuration of ZMK ke
 
 ## Requirements
 
-To use `zmk-keymap-utils`, you need to add it as a module to your west configuration with its required modules:
+To use `zmk-keymap-utils`, you need to add it as a module to your west configuration importing the required modules from west:
 
-- This module itself or a compatible fork
-- [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2) or a compatible fork
+```yaml
+manifests:
+  remotes:
+    # zmk and other remotes might be configured
+    - name: magicDGS
+      url-base: https://github.com/magicDGS
+   projects:
+    # zmk and other projects might be configured
+    - name: zmk-keymap-utils
+      remote: magicDGS
+      # pin version of the module
+      revision: v0.3
+      # import required modules (i.e., urob/zmk-helpers)
+      import: west.yml
+```
+
+You can also import it with a different version, remote or path for the required modules.
+For example, a west configuration with the main version of the module and its [zmk-helpers](https://github.com/urob/zmk-helpers) (Version 2) requirement
+that is located on the `modules` path:
 
 ```yaml
 manifests:
@@ -20,13 +37,11 @@ manifests:
    projects:
     # zmk and other projects might be configured
     - name: zmk-helpers
-      remote-name: urob
-      # pin version of the module
-      revision: v0.1
+      remote: urob
+      path: modules/zmk-helpers
     - name: zmk-keymap-utils
-      remote-name: magicDGS
-      # pin version of the module
-      revision: v0.3
+      remote: magicDGS
+      path: modules/zmk-keymap-utils
 ```
 
 > [!TIP]
@@ -41,25 +56,23 @@ Define the `OPERATING_SYSTEM` variable with the operating system you intend to u
 - `#define OPERATING_SYSTEM "W"` for Windows
 - `#define OPERATING_SYSTEM "M"` for MacOS
 
-Source the `init.h` header before using any of the features of the `zmk-keymap-utils` module on your `.keymap` file to provide the initial keycodes and shortcuts for the specified OS.
+It is important to define the `OPERATING_SYSTEM` before including any of the features from the `zmk-keymap-utils` module to have the proper configuration for your operating system.
+
+## Shortcuts and modifiers
+
+The shortcuts and modifieres are provided with the `shortcuts.h` header, which can be used with `&kp` or any other behaviors.
+They are implemented on an OS-agnostic way, by either adding aliases for keycodes or using shortcuts/macros (if keycodes are not available).
+
+To use this definitions, source the shortcuts.h header:
 
 ```c
-#include "zmk-keymap-utils/init.h"
+#include <zmk-keymap-utils/shortcuts.h>
 ```
 
-> [!CAUTION]
-> Including the `init.h` header includes also the `zmk-helpers` module.
-> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
+> [!TIP]
+> We recommend to import the shortcuts before any other behavior, as some of them would use them. They would be imported by default if not provided.
 
-## Definitions and behaviors
-
-The `zmk-keymap-utils` module provides definitions and behaviors that can be used on an OS-agnostic way to configure the keymap, by adding aliases for the keycodes or using shortcuts/macros if they are not possible.
-
-Nevertheless, some behaviors are not available on all OS, and will be marked in the tables below with `❌` or `❓` to indicate that they are not available or they are unknown.
-
-### Core definitions
-
-The core definitions are provided by default by the intial setup (including the `init.h` header on the `.keymap` file), which can be used with `&kp` or any other behavior:
+Provided shortcuts include (note that `❌` or `❓` indicates that the shortcut is no available or has unknown behavior on the OS):
 
 | Shortcut         | Description                    | L   | W   | M   |
 | ---------------- | ------------------------------ | --- | --- | --- |
@@ -101,15 +114,23 @@ Other definitons might be used on different behaviors and are not intended to be
 
 ## Select Word
 
-The `select_word.dtsi` include file provides support for extend/select behaviors for for the specified OS.
+The `select_word.dtsi` behaviors dtsi file provides support for extend/select behaviors for for the specified OS.
 They are based on the [Pascal Getreuer's Select Word macro from QMK](https://getreuer.info/posts/keyboards/select-word/index.html) implementation for ZMK by [Sunaku](https://github.com/sunaku/glove80-keymaps).
 
 To use the default configuration, import with:
 
 ```c
 // select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
-#include "zmk-keymap-utils/select_word.h"
+#include <behaviors/select_word.h>
 ```
+
+> [!CAUTION]
+> Including the `select_word.h` behavior includes also `zmk-helpers` module.
+> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
+
+> [!CAUTION]
+> The `select_word.h` behavior would source, if not already included, the `shortcuts.h` header.
+> We recommend to import it beforehand to ensure that the the configuration is explicit.
 
 To use a different delay, the `SELECT_WORD_DELAY` property can be used before import (default is `1`).
 This configuration defines how long the macro waits (in ms) after moving the cursor before it selects a word.
@@ -118,7 +139,7 @@ For example:
 
 ```c
 #define SELECT_WORD_DELAY 50
-#include "zmk-keymap-utils/select_word.h"
+#include <zmk-keymap-utils/select_word.h>
 ```
 
 The behaviors provided after import are the following:
@@ -133,7 +154,7 @@ The behaviors provided after import are the following:
 | `&extend_line` | Extend current selection by one line                                    |
 
 > [!TIP]
-> The behaviors are implemented in such a way that using them with the shift modifier active selects/extends in the t
+> The behaviors are implemented in such a way that using them with the shift modifier active selects/extends in the oposite direction.
 
 ## Home-Row Mods
 
@@ -159,9 +180,13 @@ Here we provide a basic function to define your HRM behaviors with ease.
 To use the default configuration, import with:
 
 ```c
-// select-word macros based on the Sunaku's implementation of Pascal Getreuer's Select Word macro from QMK
-#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+// timeless home-row mods based on urob's implementation
+#include <zmk-keymap-utils/hrm/timeless.h>
 ```
+
+> [!CAUTION]
+> Including the `hrm/timeless.h` header includes also the `zmk-helpers` module.
+> Please, check the [README](https://github.com/urob/zmk-helpers/blob/main/README.md) of the `zmk-helpers` module for more information.
 
 To use a different `tapping-term-ms`, the `TIMELESS_HRM_QUICK_TAP_MS` property can be used before import (default is `175`).
 This configuration can be tweak to support mod+alpha combinations in the same hand, and modifier press without other keys.
@@ -169,7 +194,7 @@ For example:
 
 ```c
 #define TIMELESS_HRM_QUICK_TAP_MS 280
-#include "zmk-keymap-utils/hrm/timeless.dtsi.h"
+#include <zmk-keymap-utils/hrm/timeless.h>
 ```
 
 After import, you can define your HRMs using the `MAKE_TIMELESS_HRM` function.
@@ -189,7 +214,7 @@ A clear example on how to use this function is a refactor of the [Urob's Persona
 > This snippet uses the standard key-labels from `urob/zmk-helpers` (see [its README](https://github.com/urob/zmk-helpers?tab=readme-ov-file#key-labels-collection) for more details).
 
 ```c
-#include "zmk-helpers/key-labels/36.h"                                      // Source key-labels.
+#include <zmk-helpers/key-labels/36.h>                                      // Source key-labels.
 #define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // Left-hand keys.
 #define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // Right-hand keys.
 #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // Thumb keys.
